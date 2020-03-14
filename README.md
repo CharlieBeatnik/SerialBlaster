@@ -14,7 +14,7 @@ SerialBlaster is built for the [M5StickC](https://m5stack.com/products/stick-c).
 * Stop Bits: **1**
 
 ## Example Serial Commands
-* ```send nec 0x3EC14DB2```
+* ```send nec 0x3EC14DB2\r```
 
 ## Controls
 * Home Button: **Toggle LCD screen on or off**
