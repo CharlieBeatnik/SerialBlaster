@@ -1,7 +1,6 @@
+#include <Arduino.h>
 #include <M5StickC.h>
 #include <IRremote.h>
-
-IRsend irsend(M5_IR);
 
 bool userDebugEnabled = false;
 unsigned int cursorYMax = 160;
@@ -21,6 +20,8 @@ void setup()
 
   pinMode(M5_BUTTON_HOME, INPUT);
   pinMode(M5_BUTTON_RST, INPUT);
+
+  IrSender.begin(M5_IR, false, 0); 
 }
 
 size_t lcdPrintln(const char *string)
@@ -74,10 +75,14 @@ void lcdBacklightEnable(bool enable)
   if(enable)
   {
     M5.Axp.ScreenBreath(15); 
+    M5.Axp.SetLDO2(true);
+    M5.Axp.SetLDO3(true);
   }
   else
   {
-    M5.Axp.ScreenBreath(0) ;
+    M5.Axp.ScreenBreath(0);
+    M5.Axp.SetLDO2(false);
+    M5.Axp.SetLDO3(false);
   }
 }
 
@@ -129,7 +134,7 @@ void loop()
               lcdPrintf("%s\n", command);
               unsigned long commandUL;
               commandUL = strtoul(command, NULL, 16);
-              irsend.sendNEC(commandUL, 32);
+              IrSender.sendNEC(commandUL, 32);
               Serial.println("OK");
 
               if(userDebugEnabled)

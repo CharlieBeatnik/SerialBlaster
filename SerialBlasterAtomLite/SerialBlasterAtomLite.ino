@@ -1,14 +1,15 @@
 #define FASTLED_INTERNAL
+#include <Arduino.h>
 #include <M5Atom.h>
 #include <IRremote.h>
 
 #define M5_IR 12
 
-IRsend irsend(M5_IR);
-
 void setup()
 {
   Serial.begin(115200);
+
+  IrSender.begin(M5_IR, false, 0); 
 
   M5.begin(true, false, true); //SerialEnable, I2CEnable, DisplayEnable
   delay(50);
@@ -59,7 +60,7 @@ void loop()
             {
               unsigned long commandUL;
               commandUL = strtoul(command, NULL, 16);
-              irsend.sendNEC(commandUL, 32);
+              IrSender.sendNEC(commandUL, 32);
               Serial.println("OK");
 
               if(flashOnSend)
