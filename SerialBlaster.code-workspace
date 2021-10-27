@@ -24,7 +24,23 @@
 			"string": "cpp",
 			"random": "cpp",
 			"iosfwd": "cpp",
-			"string_view": "cpp"
+			"string_view": "cpp",
+			"array": "cpp",
+			"chrono": "cpp",
+			"deque": "cpp",
+			"format": "cpp",
+			"forward_list": "cpp",
+			"initializer_list": "cpp",
+			"list": "cpp",
+			"regex": "cpp",
+			"valarray": "cpp",
+			"vector": "cpp",
+			"xhash": "cpp",
+			"xtree": "cpp",
+			"unordered_map": "cpp",
+			"unordered_set": "cpp",
+			"rope": "cpp",
+			"slist": "cpp"
 		}
 	}
 }
