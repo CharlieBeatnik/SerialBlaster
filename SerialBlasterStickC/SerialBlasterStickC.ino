@@ -13,6 +13,7 @@ void setup()
   lcdBacklightEnable(userDebugEnabled);
   M5.Lcd.setTextWrap(true);
   lcdPrintln("SerialBlaster");
+  lcdPrintln("Version 2.0");
 
   pinMode(M5_LED, OUTPUT);
   digitalWrite(M5_LED, LOW);
@@ -143,9 +144,9 @@ void loop()
               commandUL = strtoul(command, NULL, 16);
               commandUL = reverse(commandUL);
               
-              char address = (char)commandUL;
-              char command = (char)(commandUL >> 16);
-              IrSender.sendNEC(address, command, numRepeats);
+              uint16_t address = (uint16_t)commandUL;
+              uint8_t com = (uint8_t)(commandUL >> 16);
+              IrSender.sendNEC(address, com, numRepeats);
               
               Serial.println("OK");
 
