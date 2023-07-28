@@ -1,7 +1,7 @@
 # SerialBlaster
 SerialBlaster is built for the [M5StickC](https://m5stack.com/products/stick-c). It allows IR commands to be sent to the M5StickC over USB using serial RS232, which will then in turn be blasted from the built in IR blaster. The LCD screen is used as a debug aid to view the serial messages being sent to the device.
 
-<img width="250" alt="portfolio_view" src="https://cdn.shopify.com/s/files/1/0056/7689/2250/products/rB9kfV1I7niAOekMAAvzZELABIg730.jpg?v=1572415641">
+<img width="250" alt="portfolio_view" src="https://shop.m5stack.com/cdn/shop/products/01_1200x1200.jpg?v=1587104211">
 
 
 ## Build Requirements
