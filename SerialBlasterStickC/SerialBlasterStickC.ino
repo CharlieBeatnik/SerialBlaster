@@ -13,7 +13,7 @@ void setup()
   lcdBacklightEnable(userDebugEnabled);
   M5.Lcd.setTextWrap(true);
   lcdPrintln("SerialBlaster");
-  lcdPrintln("Version 2.0");
+  lcdPrintln("Version 3.0");
 
   pinMode(M5_LED, OUTPUT);
   digitalWrite(M5_LED, LOW);
@@ -75,13 +75,11 @@ void lcdBacklightEnable(bool enable)
 {
   if(enable)
   {
-    M5.Axp.ScreenBreath(15); 
     M5.Axp.SetLDO2(true);
     M5.Axp.SetLDO3(true);
   }
   else
   {
-    M5.Axp.ScreenBreath(0);
     M5.Axp.SetLDO2(false);
     M5.Axp.SetLDO3(false);
   }
@@ -142,7 +140,7 @@ void loop()
               lcdPrintf("%s\n", command);
               unsigned long commandUL;
               commandUL = strtoul(command, NULL, 16);
-              commandUL = reverse(commandUL);
+              //commandUL = reverse(commandUL);
               
               uint16_t address = (uint16_t)commandUL;
               uint8_t com = (uint8_t)(commandUL >> 16);
