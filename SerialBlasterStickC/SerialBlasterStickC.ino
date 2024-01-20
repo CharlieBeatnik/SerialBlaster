@@ -2,7 +2,7 @@
 #include <M5StickC.h>
 #include <IRremote.h>
 
-bool userDebugEnabled = false;
+bool userDebugEnabled = true;
 unsigned int cursorYMax = 160;
 
 void setup()
@@ -13,7 +13,7 @@ void setup()
   lcdBacklightEnable(userDebugEnabled);
   M5.Lcd.setTextWrap(true);
   lcdPrintln("SerialBlaster");
-  lcdPrintln("Version 3.0");
+  lcdPrintln("Version 4.0");
 
   pinMode(M5_LED, OUTPUT);
   digitalWrite(M5_LED, LOW);
@@ -97,8 +97,20 @@ void loop()
 
   if(buttonHomePrevious == HIGH && buttonHome == LOW)
   {
-      userDebugEnabled = !userDebugEnabled;
-      lcdBacklightEnable(userDebugEnabled);
+      //userDebugEnabled = !userDebugEnabled;
+      //lcdBacklightEnable(userDebugEnabled);
+
+       lcdPrintf("Sent PS2 Power\n");
+      IrSender.sendSony(0x1B5A, 0x15, 2, SIRCS_20_PROTOCOL);
+
+      // lcdPrintf("Sent PS2 Up\n");
+      // IrSender.sendSony(0x1B5A, 0x54, 2, SIRCS_20_PROTOCOL);
+
+    
+
+      digitalWrite(M5_LED, LOW);
+      delay(50);
+      digitalWrite(M5_LED, HIGH);
   }
   buttonHomePrevious = buttonHome;
 
