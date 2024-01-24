@@ -4,6 +4,8 @@
 
 bool userDebugEnabled = false;
 unsigned int cursorYMax = 160;
+#define M5_GROVEIR_RECIEVE_PIN 33
+#define M5_GROVEIR_SEND_PIN 32
 
 void setup()
 {
@@ -13,7 +15,7 @@ void setup()
   lcdBacklightEnable(userDebugEnabled);
   M5.Lcd.setTextWrap(true);
   lcdPrintln("SerialBlaster");
-  lcdPrintln("Version 3.0");
+  lcdPrintln("Version 3.1");
 
   pinMode(M5_LED, OUTPUT);
   digitalWrite(M5_LED, LOW);
@@ -22,7 +24,7 @@ void setup()
   pinMode(M5_BUTTON_HOME, INPUT);
   pinMode(M5_BUTTON_RST, INPUT);
 
-  IrSender.begin(M5_IR, false, 0); 
+  IrSender.begin(M5_GROVEIR_SEND_PIN, false, 0); 
 }
 
 size_t lcdPrintln(const char *string)
